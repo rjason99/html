@@ -27,9 +27,15 @@
 
         .main-column {
             float: left;
-            width: 50%;
+            width: 40%;
             background-color: white;
-            /*padding: 0px 40px 0px 40px;*/
+            padding: 0px 40px 0px 40px;
+        }
+
+        .clear-fix::after{
+            content: "";
+            clear: both;
+            display: block;
         }
 
         p {
@@ -45,7 +51,7 @@
         <p>for student</p>
     </header>
     <main>
-        <div>
+        <div class="clear-fix">
             <div class="main-column">
                 <h3>About us</h3>
                 <p>lkdjvfldasfldslghdlsfkgjdfklsgjdlsfkgfsdjkfhkjshdf shdkfjhaskdjhfdsjbckuhrqewurpehgvfjdvnxcnv
