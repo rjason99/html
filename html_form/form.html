@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <form action="/sign-up" method="post">
+
+        <br />
+        <label for="name">Введите имя: </label>
+        <input type="text" id="name" />
+        <input type="submit" id="btn" value="Сохранить" />
+        <br />
+    </form>
+
+    <form action="" method="get">
+        <fieldset>
+            <legend>Field Set</legend>
+        <ul style="list-style: none;">
+            <li>
+                <label for="cars">Выпадающий список</label>
+                <select id="cars" name="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="fiat" selected>Fiat</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </li>
+        </ul>
+    </fieldset>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <form action="" method="get">
+        <fieldset>
+            <legend>Форма заказа</legend>
+            <ul style="list-style: none;">
+                <li>
+                    <label for="name">Имя: </label>
+                    <input type="text" id="name" />
+                </li>
+                <li>
+                    <label for="address">Адрес: </label>
+                    <input type="text" id="address" />
+                </li>
+                <li>
+                    <label for="phone">Телефон: </label>
+                    <input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                </li>
+                <li>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                </li>
+                <li>
+                    <label for="count">Количество палочек: </label>
+                    <input type="number" id="count" />
+                </li>
+                <li>
+                    <label for="cars">Вид палочек: </label>
+                    <select id="cars" name="cars">
+                        <option value="common" selected>Обычные</option>
+                        <option value="learning">Учебные</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="count">Нужно ли класть салфетки?</label>
+                    <input type="checkbox" id="count" />
+                </li>
+                <li>
+                    <textarea name="comment" style="width: 500px; height: 300px;">
+                    </textarea>
+                </li>
+                <li>
+                    <input type="submit" id="btn" value="Заказать" />
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</body>
+
+</html>
