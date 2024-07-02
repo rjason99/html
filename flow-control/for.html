@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*let num = parseInt(prompt('Введите число: '));
+        for (let i = 1; i < 100; i++) {
+            if ((i % num) === 0) {
+                alert(i);
+            }
+            
+        }*/
+        /*let a = parseInt(prompt('Введите минимальную границу: '));
+        let b = parseInt(prompt('Введите максимальную границу: '));
+        for (let i = a + 4; i < b; i+=4) {
+            alert(i);
+            
+        }*/
+        function FRate(num, rate) {
+            let f = num ** rate;
+            return f;
+        }
+        /*let a = parseInt(prompt('Введите число: '));
+        let b = parseInt(prompt('Задайте степень: '));
+        alert(`${a} в степени ${b} = ${FRate(a, b)}`);*/
+
+
+        function FOdd(a, b, flag) {
+            let rem;
+            if (flag) {
+                rem = 0;
+            } else {
+                rem = 1;
+            }
+            for (let i = a; i < b; i++) {
+                if ((i % 2) === rem) {
+                alert(i);
+            }
+
+            }
+        }
+        let x = parseInt(prompt('Введите минимальную границу: '));
+        let y = parseInt(prompt('Введите максимальную границу: '));
+        FOdd(x, y, true);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
