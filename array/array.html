@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let numbers = [1, 2, 3, 4];
+        //alert(numbers[0]);
+        //document.write(numbers[3]);
+
+        let randomNumbers = generateArray();
+        show(randomNumbers);
+        //showEvenElements(randomNumbers);
+        sum(randomNumbers);
+        randomNumbers[0] = Math.floor(Math.random() * 100);
+        //document.write(randomNumbers[0]);
+
+        function generateArray() {
+            let arr = [];
+            for(let i = 0; i < 10; i++) {
+                arr[i] = Math.floor(Math.random() * 100);
+            }
+            return arr;
+        }
+
+        function show(array) {
+            document.write(array);
+        }
+
+        function showEvenElements(array) {
+            for(let i = 1; i < array.length; i+=2) {
+                document.write(array[i] + ' ');
+            }
+        }
+
+        function sum(array) {
+            let s = 0;
+            for(let i = 0; i < array.length; i++) {
+                s += array[i];
+            }
+            document.write('<BR><BR>Сумма элементов массива: ' + s);
+        }
+
+        //alert(`max: ${max(1, 6, 48, 14, 12)}`);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
