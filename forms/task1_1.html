@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js'></script>
+    <title>Messages</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .bordered {
+            border: 1px solid #666565;
+            padding: 7px 15px;
+        }
+
+        .post {
+            margin: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <!-- <div>
+            <div>Name</div>
+
+            <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam ipsam facere fuga deleniti, nostrum
+                nulla
+                recusandae cum tenetur, consequuntur aut quos officia aliquam magnam in ipsa ea quasi, nam quisquam?
+            </div>
+        </div> -->
+
+    <form action="" method="post">
+        Add new messages:
+        <div>
+            <input type="text" name="name" id="name" />
+        </div>
+        <div>
+            <textarea name="message" id="message"></textarea>
+        </div>
+        <input type="submit" value="Send" />
+    </form>
+
+    <script>
+        let form = document.forms[0];
+        form.addEventListener("submit", saveMessage);
+
+        function saveMessage(event) {
+            let now = luxon.DateTime.now().toFormat("HH:mm:ss dd.MM.yyyy");
+            event.preventDefault();
+            let userName = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+            let header = document.createElement("div");
+            header.innerHTML = userName;
+            header.className = "bordered";
+
+            let date = document.createElement("span");
+            // let format = new Intl.DateTimeFormat("RU", { dateStyle: "short" });
+            // date.innerText = format.format(new Date());
+            date.innerHTML = now;
+            date.style.float = "right";
+            header.appendChild(date);
+
+            let body = document.createElement("div");
+            body.innerHTML = message;
+            body.className = "bordered";
+            body.style.borderTopStyle = "none";
+
+            let post = document.createElement("div");
+            post.className = "post";
+            post.appendChild(header);
+            post.appendChild(body);
+            document.getElementById("container").appendChild(post);
+            form.reset();
+        }
+    </script>
+</body>
+
+</html>

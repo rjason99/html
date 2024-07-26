@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <p>1) How many letters are here in the word "Hello"?</p>
+        <div>
+            <input type="radio" name="options" id="option1" />
+            <label for="option1">2</label>
+        </div>
+
+        <div>
+            <input type="radio" name="options" id="option2" />
+            <label for="option2">5</label>
+        </div>
+
+        <input type="submit" value="Next" id="submit" />
+    </form>
+</body>
+
+<script>
+    let form = document.forms[0];
+    form.addEventListener("submit", submitHandler);
+    let sum = 0;
+    let count = 0;
+
+    function submitHandler(e) {
+        e.preventDefault();
+        count++;
+
+        switch (count) {
+            case 1:
+                if (form.elements[1].checked)
+                    sum++;
+                document.querySelector("p").innerText = '2) How many letters are here in the word "World"?';
+                break;
+            case 2:
+                if (form.elements[1].checked)
+                    sum++;
+                document.querySelector("p").innerText = '3) How many letters are here in the word "JS"?';
+                break;
+            case 3:
+                if (form.elements[0].checked)
+                    sum++;
+                break;
+            default:
+                alert(sum);
+                break;
+        }
+
+        if (count === 2) {
+            document.getElementById("submit").value = "Finish";
+        }
+    }
+
+</script>
+
+</html>

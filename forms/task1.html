@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <style>
+        div div {
+            border: 1px solid black;
+            padding: 10px 15px;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin: 10px 10px 10px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <div id="container"></div>
+        <div>
+            <div>Name</div>
+            <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur commodi aperiam excepturi
+                accusamus qui, expedita, autem enim animi dicta eos minus nemo voluptatem dolore aliquid iusto voluptate
+                accusantium ullam nisi!
+            </div>
+        </div>
+        <p>Add new messages:</p>
+
+        <div>
+            <label>Your name:
+                <input type="text" name="name" id="name" />
+            </label>
+        </div>
+        <div>
+            <label>Your message:
+                <textarea name="message" id="message"></textarea>
+            </label>
+        </div>
+
+        <input type="submit" value="Send" />
+    </form>
+    <script>
+        let form = document.forms[0];
+        form.addEventListener("submit", saveMessage);
+
+        function saveMessage() {
+            event.preventDefault();
+            let userName = document.getElementById("name").value;
+            let message = document.getElementById("message").value;
+
+            let header = document.createElement("div");
+            header.innerHTML = userName;
+
+            let body = document.createElement("div");
+            body.innerHTML = message;
+            document.getElementById("container").appendChild(header);
+            document.getElementById("container").appendChild(body);
+            form.reset();
+        }
+    </script>
+</body>
+
+</html>
