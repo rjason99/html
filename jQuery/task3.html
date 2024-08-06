@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        div div {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+        }
+        div div, button {
+            border: 1px solid #5f5f5f;
+            color: #ffffff;
+        }
+        .shadow {
+            box-shadow: 0px 0px 4px 5px violet;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("button.red").click(function(){
+                $(this).addClass("shadow");
+                $("div.red").css("box-shadow", "0px 0px 4px 5px violet");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <br>Select color: </br>
+        <button type="button" class="red">Red</button>
+        <button type="button" class="green">Green</button>
+        <button type="button" class="orange">Orange</button>
+        <button type="button" class="yellow">Yellow</button>
+    </div>
+    <hr/>
+    <div>
+        <h4>Fruits: </h4>
+        <div class="red">Red</div>
+        <div class="green">Green</div>
+        <div class="orange">Orange</div>
+        <div class="yellow">Yellow</div>
+    </div>
+</body>
+
+</html>
