@@ -1,0 +1,15 @@
+http://www.omdbapi.com/?apikey=3278a82c&s=empty&type=movie
+
+let jStr = JSON.parse(response);
+            let usersDiv = document.getElementById("users");
+            for (let i = 0; i < jStr.length; i++) {
+                const name = jStr[i].name;
+                let userDiv = document.createElement("div");
+                userDiv.innerText = name;
+                userDiv.className = "userDiv";
+                userDiv.style.backgroundColor = "red";
+                userDiv.onclick = function () {
+                    document.getElementById
+                }
+                usersDiv.appendChild(userDiv);
+            }

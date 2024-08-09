@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        h4 {
+            text-align: center;
+        }
+
+        .filmDiv {
+            box-sizing: border-box;
+            width: 40%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+
+        .divInfo {
+            width: 10%;
+            margin: 10px;
+            padding: 50px;
+            border: 1px solid #000000;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="get">
+        <h4>Search:</h4>
+        <div class="filmDiv">
+            <div>
+                <label for="title">Title:
+                    <input type="text" name="title" id="title" />
+                </label>
+            </div>
+            <div>
+                <label for="movies">Type: </label>
+                <select id="movies" name="movies">
+                    <option value="movie" selected>movie</option>
+                    <option value="series">series</option>
+                    <option value="episode">episode</option>
+                </select>
+            </div>
+            <input type="submit" value="Search" id="Search" />
+        </div>
+    </form>
+    <h4>Films:</h4>
+        <div id="films"></div>
+
+
+</body>
+
+<script>
+    let form = document.forms[0];
+    form.addEventListener("submit", search);
+
+    function search(event) {
+        let request = new XMLHttpRequest();
+        let response;
+        let fTitle = document.getElementById("title").value;
+        let fType = document.getElementById("movies").value;
+
+        request.onload = function () {
+            response = request.response;
+            console.log(response);
+            let films = JSON.parse(response).Search;
+            let movies = document.getElementById("films");
+            for (let i = 0; i < films.length; i++) {
+                const name = films[i].Title;
+                let film = document.createElement("div");
+                let btn = document.createElement("button");
+                film.innerText = name;
+                film.className = "divInfo";
+                btn.innerText = "Details";
+                film.appendChild(btn);
+                movies.appendChild(film);
+            }
+        }
+        request.open("GET", `http://www.omdbapi.com/?apikey=3278a82c&s=${fTitle}&type=${fType}`);
+        request.send();
+        event.preventDefault();
+    }
+</script>
+
+</html>
