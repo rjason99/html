@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        #logForm {
+            background-color: bisque;
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+        }
+        #container{
+            border: 1px solid rgb(122, 122, 122);
+            width: 350px;
+            height: 150px;
+            padding: 20px; 
+            border-radius: 5px;           
+        }
+        h3{
+            text-align: center;
+        }
+        label{
+            font-weight: bold;
+            float: left;
+        }
+        select {
+            margin-left: 50px;
+            width: 70%;
+            height: 30px;
+            border-radius: 5px;
+        }
+       
+        input{
+            margin-left: 50px;
+            width: 70%;
+            height: 20px;
+            border-radius: 5px;
+            border-width: 1px;
+        }
+        #submit{
+            background-color: darkgray;
+            border-width: 1px;
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #container-films div{
+            display: block;
+            border: 1px solid rgb(91, 90, 90);
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        #film-info{
+            display: block;
+            border: 1px solid rgb(91, 90, 90);
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        button{
+           background-color: rgb(151, 149, 149);
+           float: right;
+        }
+        .image{
+            width: 100px;
+            height: 150px;
+            float: left;
+           
+        }
+        p{
+            font-weight: 20px;
+        }
+
+    </style>
+</head>
+<body>
+   <form action="" method="POST" id="logForm">
+<h3>Search:</h3>
+<div id="container">
+<div>
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title"/>
+</div><br/>
+
+<div>
+    <label for="type">Type:</label>
+    <select name="type" id="type">
+        <option value="1" selected>movie</option>
+        <option value="2">series</option>
+        <option value="3" >episode</option>
+    </select>   
+</div><br/>
+<div>
+   <input type="submit" id="submit" value="Search"/>
+</div>
+
+</div>
+   </form>
+<h3>Films:</h3>
+   <div id="container-films">
+   </div>
+   <div id="film-info"></div>
+
+   <script>
+
+    let request = new XMLHttpRequest();
+     
+    request.open("GET","http://www.omdbapi.com/?apikey=3278a82c&s=hello&type=movie");
+    request.send();
+
+    request.onload = function(e){
+        let response = request.response;       
+        let parsedResponse =JSON.parse(response);
+      console.log(parsedResponse.Search);
+        let films = parsedResponse.Search;
+
+        for (let film of films){
+            
+            let div = document.createElement("div");
+            div.innerHTML = `<img class="image" src="${film.Poster}"/><p>${film.Type}</p><p><b>${film.Title}</b></p><p>${film.Year}</p>`;
+
+            // let image = document.createElement("div");
+            // image.className = "image";
+            // image.innerHTML = `<img src="${film.Poster}"/>`;
+
+            let button = document.createElement("button");
+             button.innerHTML = "Details";
+           // document.getElementById("container-films").appendChild(div).appendChild(image).appendChild(button);
+          
+                     
+            document.getElementById("container-films").appendChild(div).appendChild(button);   
+
+    button.onclick = function(e){
+        e.preventDefault();
+        let request1 = new XMLHttpRequest();
+        request1.open("GET","http://www.omdbapi.com/?apikey=3278a82c&i=tt1285016");
+        request1.send();
+        request1.onload = function(e){
+            let response1 = request1.response;       
+            let info =JSON.parse(response1);
+            let div2 = document.createElement("div");
+            div2.innerHTML = `<img class="image" src="${info.Poster}"/><p>Title: ${info.Title}</p>
+            <p>${info.Released}</p><p>${info.Genre}</p><p>${info.Country}</p><p>${info.Director}</p>
+            <p>${info.Writer}</p><p>${info.Actors}</p><p>${info.Awards}</p>`;
+            document.getElementById("film-info").appendChild(div2);  
+        }
+    }
+}
+    }
+   </script>
+   
+    
+</body>
+</html>
